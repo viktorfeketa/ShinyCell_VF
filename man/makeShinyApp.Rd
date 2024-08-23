@@ -12,6 +12,7 @@ makeShinyApp(
   gene.mapping = FALSE,
   shiny.title = "scRNA-seq shiny app",
   shiny.footnotes = "",
+  shiny.version = "",
   shiny.dir = "shinyApp/",
   enableSubset = TRUE,
   defPtSiz = 1.25,
@@ -78,6 +79,8 @@ show in bubbleplot / heatmap}
 
 \item{default.dimred}{character vector specifying the two default dimension 
 reductions. Default is to use UMAP if not TSNE embeddings}
+
+\item{shiny, version}{version string}
 }
 \value{
 directory containing shiny app

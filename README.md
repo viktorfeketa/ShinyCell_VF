@@ -1,3 +1,11 @@
+# Custom version of the ShinyCell package
+This version adds an additional panel called "Top DE Genes", which displays top DE genes 
+between experimental and control conditions. In addition, a table with statistical comparison 
+is shown below the Violin Plot in the "Violin plot" tab.
+The Seurat object must contain a meta-field ExpGroup containing experimental group designation for each cell.
+ExpGroup must have a value of either "Monomer" or "PFF".
+Below is the Readme page of the original ShinyCell package.
+
 # ShinyCell package
 `ShinyCell` is a R package that allows users to create interactive Shiny-based 
 web applications to visualise single-cell data via (i) visualising cell 

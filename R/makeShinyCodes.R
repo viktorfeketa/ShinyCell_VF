@@ -10,7 +10,8 @@
 #' @param shiny.title title for shiny app
 #' @param shiny.footnotes text for shiny app footnote. When given as a list, 
 #'   citation can be inserted by specifying author, title, journal, volume, 
-#'   page, year, doi, link. See example below. 
+#'   page, year, doi, link. See example below.
+#' @param shiny.version version string
 #' @param shiny.prefix specify file prefix 
 #' @param shiny.dir specify directory to create the shiny app in
 #' @param enableSubset specify whether to enable "Toggle to subset cells" 
@@ -40,7 +41,7 @@
 #'                shiny.prefix = "sc1", shiny.dir = "shinyApp/")
 #'
 #' @export
-makeShinyCodes <- function(shiny.title, shiny.footnotes,
+makeShinyCodes <- function(shiny.title, shiny.footnotes, shiny.version,
                            shiny.prefix, shiny.dir, 
                            enableSubset = TRUE, defPtSiz = 1.25,
                            ganalytics = NA){
@@ -53,7 +54,7 @@ makeShinyCodes <- function(shiny.title, shiny.footnotes,
     fname = paste0(shiny.dir, "/server.R")
     readr::write_file(wrLib(
       c("shiny","shinyhelper","data.table","Matrix","DT","magrittr","ggplot2",
-        "ggrepel","hdf5r","ggdendro","gridExtra")), file = fname)
+        "ggrepel","hdf5r","ggdendro","gridExtra", "Seurat", "dplyr", "presto", "BiocVersion", "qs")), file = fname)
     readr::write_file(wrSVload(shiny.prefix), append = TRUE, file = fname)
     readr::write_file(wrSVfix(), append = TRUE, file = fname)
     readr::write_file(wrSVmain(shiny.prefix, subst), append = TRUE, file = fname)
@@ -68,7 +69,7 @@ makeShinyCodes <- function(shiny.title, shiny.footnotes,
     readr::write_file(wrUIsingle(shiny.title, ganalytics), append = TRUE, file = fname)
     readr::write_file(wrUImain(shiny.prefix, subst, defPtSiz), append = TRUE, file = fname)
     readr::write_file(glue::glue(', \n'), append = TRUE, file = fname)
-    readr::write_file(wrUIend(shiny.footnotes), append = TRUE, file = fname)
+    readr::write_file(wrUIend(shiny.footnotes, shiny.version), append = TRUE, file = fname)
     
     
     ### Write code for google-analytics.html

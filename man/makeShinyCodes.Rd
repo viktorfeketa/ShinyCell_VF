@@ -7,6 +7,7 @@
 makeShinyCodes(
   shiny.title,
   shiny.footnotes,
+  shiny.version,
   shiny.prefix,
   shiny.dir,
   enableSubset = TRUE,
@@ -20,6 +21,8 @@ makeShinyCodes(
 \item{shiny.footnotes}{text for shiny app footnote. When given as a list, 
 citation can be inserted by specifying author, title, journal, volume, 
 page, year, doi, link. See example below.}
+
+\item{shiny.version}{version string}
 
 \item{shiny.prefix}{specify file prefix}
 

@@ -7,6 +7,7 @@
 makeShinyCodesMulti(
   shiny.title,
   shiny.footnotes,
+  shiny.version,
   shiny.prefix,
   shiny.headers,
   shiny.dir,
@@ -21,6 +22,8 @@ makeShinyCodesMulti(
 \item{shiny.footnotes}{text for shiny app footnote. When given as a list, 
 citation can be inserted by specifying author, title, journal, volume, 
 page, year, doi, link. See example below.}
+
+\item{shiny.version}{version footnote text}
 
 \item{shiny.prefix}{specify file prefix for each dataset. Must match the 
 prefix used in \code{makeShinyFiles}}

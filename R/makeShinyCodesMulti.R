@@ -11,6 +11,7 @@
 #' @param shiny.footnotes text for shiny app footnote. When given as a list, 
 #'   citation can be inserted by specifying author, title, journal, volume, 
 #'   page, year, doi, link. See example below. 
+#' @param shiny.version version footnote text
 #' @param shiny.prefix specify file prefix for each dataset. Must match the 
 #'   prefix used in \code{makeShinyFiles}
 #' @param shiny.headers specify the tab header names for each dataset. Length 
@@ -47,7 +48,7 @@
 #'                shiny.dir = "shinyApp/")
 #'                
 #' @export
-makeShinyCodesMulti <- function(shiny.title, shiny.footnotes,
+makeShinyCodesMulti <- function(shiny.title, shiny.footnotes, shiny.version,
                                 shiny.prefix, shiny.headers, shiny.dir, 
                                 enableSubset = TRUE, defPtSiz = 1.25,
                                 ganalytics = NA){
@@ -67,7 +68,7 @@ makeShinyCodesMulti <- function(shiny.title, shiny.footnotes,
     fname = paste0(shiny.dir, "/server.R")
     readr::write_file(wrLib(
       c("shiny","shinyhelper","data.table","Matrix","DT","magrittr","ggplot2",
-        "ggrepel","hdf5r","ggdendro","gridExtra")), file = fname)
+        "ggrepel","hdf5r","ggdendro","gridExtra", "Seurat", "dplyr", "presto", "BiocVersion", "qs")), file = fname)
     for(i in shiny.prefix){
       readr::write_file(wrSVload(i), append = TRUE, file = fname)
     }
@@ -94,7 +95,7 @@ makeShinyCodesMulti <- function(shiny.title, shiny.footnotes,
                         append = TRUE, file = fname)
       readr::write_file(glue::glue('), \n\n\n'), append = TRUE, file = fname)
     }
-    readr::write_file(wrUIend(shiny.footnotes), append = TRUE, file = fname)
+    readr::write_file(wrUIend(shiny.footnotes, shiny.version), append = TRUE, file = fname)
     
     
     ### Write code for google-analytics.html

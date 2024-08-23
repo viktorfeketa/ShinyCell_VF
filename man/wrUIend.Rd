@@ -4,7 +4,7 @@
 \alias{wrUIend}
 \title{Write code for final portion of ui.R}
 \usage{
-wrUIend(footnote)
+wrUIend(footnote, version)
 }
 \arguments{
 \item{footnote}{shiny app footnote}

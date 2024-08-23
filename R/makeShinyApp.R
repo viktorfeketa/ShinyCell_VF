@@ -30,7 +30,8 @@
 #' @param shiny.title title for shiny app
 #' @param shiny.footnotes text for shiny app footnote. When given as a list, 
 #'   citation can be inserted by specifying author, title, journal, volume, 
-#'   page, year, doi, link. See example below. 
+#'   page, year, doi, link. See example below.
+#' @param shiny,version version string
 #' @param shiny.dir specify directory to create the shiny app in. Default is 
 #'   to create a new directory named "shinyApp"
 #' @param enableSubset specify whether to enable "Toggle to subset cells" 
@@ -74,7 +75,7 @@
 makeShinyApp <- function(
   obj, scConf, gex.assay = NA, gex.slot = c("data", "scale.data", "counts"), 
   gene.mapping = FALSE, 
-  shiny.title = "scRNA-seq shiny app", shiny.footnotes = "",
+  shiny.title = "scRNA-seq shiny app", shiny.footnotes = "", shiny.version = "",
   shiny.dir = "shinyApp/", enableSubset = TRUE, defPtSiz = 1.25, ganalytics=NA,
   default.gene1 = NA, default.gene2 = NA, default.multigene = NA, 
   default.dimred = NA){
@@ -86,7 +87,7 @@ makeShinyApp <- function(
                  gene.mapping = gene.mapping, 
                  shiny.prefix = "sc1", shiny.dir = shiny.dir, 
                  default.gene1, default.gene2, default.multigene, default.dimred)
-  makeShinyCodes(shiny.title = shiny.title, shiny.footnotes = shiny.footnotes,
+  makeShinyCodes(shiny.title = shiny.title, shiny.footnotes = shiny.footnotes, shiny.version = shiny.version,
                  shiny.prefix = "sc1", shiny.dir = shiny.dir, 
                  enableSubset = enableSubset, defPtSiz = defPtSiz,
                  ganalytics = ganalytics)
