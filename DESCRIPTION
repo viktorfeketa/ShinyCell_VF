@@ -1,4 +1,4 @@
-Package: ShinyCell_VF
+Package: ShinyCellVF
 Type: Package
 Title: Shiny Interactive Web Apps for Single-Cell Data (Viktor Feketa modification)
 Version: 2.1.0
