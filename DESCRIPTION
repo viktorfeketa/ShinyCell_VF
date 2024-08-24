@@ -3,7 +3,7 @@ Type: Package
 Title: Shiny Interactive Web Apps for Single-Cell Data (Viktor Feketa modification)
 Version: 2.1.0
 Author: John F. Ouyang, Viktor Feketa
-Maintainer: Viktor Feketa
+Maintainer: Viktor Feketa <viktor.feketa@yale.edu>
 Description: Shiny apps for interactive exploration of single-cell data. Custom modification by Viktor Feketa
 License: GPL-3
 Suggests:
