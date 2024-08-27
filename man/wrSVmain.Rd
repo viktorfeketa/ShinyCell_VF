@@ -4,7 +4,7 @@
 \alias{wrSVmain}
 \title{Write code for main block of server.R}
 \usage{
-wrSVmain(prefix, subst = "")
+wrSVmain(prefix, grouping.var = "group", subst = "")
 }
 \arguments{
 \item{prefix}{file prefix}

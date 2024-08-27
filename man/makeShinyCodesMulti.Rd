@@ -13,7 +13,8 @@ makeShinyCodesMulti(
   shiny.dir,
   enableSubset = TRUE,
   defPtSiz = 1.25,
-  ganalytics = NA
+  ganalytics = NA,
+  grouping.var = "group"
 )
 }
 \arguments{
@@ -42,6 +43,8 @@ value can be specified to set the point size for all datasets. Otherwise,
 users have to specify one value for each dataset}
 
 \item{ganalytics}{Google analytics tracking ID (e.g. "UA-123456789-0")}
+
+\item{grouping.var}{Grouping variable name for DE tests}
 }
 \value{
 server.R and ui.R required for shiny app

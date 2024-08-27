@@ -24,6 +24,7 @@
 #'   value can be specified to set the point size for all datasets. Otherwise,
 #'   users have to specify one value for each dataset
 #' @param ganalytics Google analytics tracking ID (e.g. "UA-123456789-0")
+#' @param grouping.var Grouping variable name for DE tests
 #'
 #' @return server.R and ui.R required for shiny app
 #'
@@ -51,7 +52,7 @@
 makeShinyCodesMulti <- function(shiny.title, shiny.footnotes, shiny.version,
                                 shiny.prefix, shiny.headers, shiny.dir, 
                                 enableSubset = TRUE, defPtSiz = 1.25,
-                                ganalytics = NA){
+                                ganalytics = NA, grouping.var = "group"){
   ### Checks
   if(length(shiny.prefix) != length(shiny.headers)){
     stop("length of shiny.prefix and shiny.headers does not match!")
@@ -74,7 +75,7 @@ makeShinyCodesMulti <- function(shiny.title, shiny.footnotes, shiny.version,
     }
     readr::write_file(wrSVfix(), append = TRUE, file = fname)
     for(i in shiny.prefix){
-      readr::write_file(wrSVmain(i, subst), append = TRUE, file = fname)
+      readr::write_file(wrSVmain(i, grouping.var, subst), append = TRUE, file = fname)
     }
     readr::write_file(wrSVend(), append = TRUE, file = fname)
     
@@ -91,7 +92,7 @@ makeShinyCodesMulti <- function(shiny.title, shiny.footnotes, shiny.version,
       hhh = shiny.headers[i]
       readr::write_file(glue::glue('navbarMenu("{hhh}",'), 
                         append = TRUE, file = fname)
-      readr::write_file(wrUImain(shiny.prefix[i], subst, defPtSiz[i]), 
+      readr::write_file(wrUImain(shiny.prefix[i], grouping.var, subst, defPtSiz[i]), 
                         append = TRUE, file = fname)
       readr::write_file(glue::glue('), \n\n\n'), append = TRUE, file = fname)
     }
